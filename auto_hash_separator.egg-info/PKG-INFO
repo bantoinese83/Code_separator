@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: auto_hash_separator
-Version: 0.1
+Version: 0.2
 Summary: Python package for inserting hash separators between functions and classes.
 Home-page: https://github.com/bantoinese83/Code_separator
 Author: Bryan Antoine

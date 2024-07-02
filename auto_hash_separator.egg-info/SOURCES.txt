@@ -1,3 +1,4 @@
+README.md
 setup.py
 auto_hash_separator.egg-info/PKG-INFO
 auto_hash_separator.egg-info/SOURCES.txt
