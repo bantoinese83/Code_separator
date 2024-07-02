@@ -3,7 +3,6 @@
 import os
 
 
-# ##############################################################################
 def list_python_files(directory):
     """
     Lists all Python files in a directory.
