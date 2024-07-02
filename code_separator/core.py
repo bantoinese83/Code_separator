@@ -1,9 +1,7 @@
 import logging
 import re
 import traceback
-
 from halo import Halo
-
 
 logging.basicConfig(
     filename="app.log",
@@ -22,11 +20,11 @@ def insert_hash_separator(file_path):
             script_content = f.readlines()
 
         positions = find_class_function_positions(script_content)
+        insert_positions = calculate_insert_positions(script_content, positions)
 
         # Insert hash separators in reverse order to preserve line numbers
-        for pos in reversed(positions):
-            insert_position = find_insert_position(script_content, pos)
-            script_content.insert(insert_position, "# " + "#" * 78 + "\n")
+        for pos in reversed(insert_positions):
+            script_content.insert(pos, "# " + "#" * 78 + "\n")
 
         with open(file_path, "w") as f:
             f.writelines(script_content)
@@ -41,29 +39,28 @@ def insert_hash_separator(file_path):
 
 def find_class_function_positions(script_content):
     positions = []
-    stack = []
     pattern = re.compile(r"^(class|def)\s+\w+\s*\(?[^:]*:$")
 
     for index, line in enumerate(script_content):
-        indent_level = len(line) - len(line.lstrip())
-
-        # Handle nested classes and functions
-        while stack and indent_level <= stack[-1][1]:
-            stack.pop()
-
         if pattern.match(line.strip()):
             positions.append(index)
-            stack.append((index, indent_level))
 
     return positions
 
 
-def find_insert_position(script_content, pos):
-    for i in range(pos - 1, -1, -1):
-        line = script_content[i].strip()
-        if line and not line.startswith("#"):
-            return i + 1
-    return pos
+def calculate_insert_positions(script_content, positions):
+    insert_positions = []
+    for pos in positions:
+        indent_level = len(script_content[pos]) - len(script_content[pos].lstrip())
+        for i in range(pos + 1, len(script_content)):
+            line = script_content[i]
+            current_indent = len(line) - len(line.lstrip())
+            # Check for lines with lesser indent (end of block) or end of file
+            if current_indent <= indent_level or i == len(script_content) - 1:
+                insert_positions.append(i)
+                break
+
+    return insert_positions
 
 
 # Example usage:
