@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: auto_hash_separator
+Version: 0.1
+Summary: Python package for inserting hash separators between functions and classes.
+Home-page: https://github.com/bantoinese83/Code_separator
+Author: Bryan Antoine
+Author-email: b.antoine.se@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Dist: halo
+
+Auto_Hash_Separator is a Python package designed to automate the insertion of hash separators 
+    between functions and classes within Python files. This tool enhances code readability by visually separating 
+    distinct sections of code, improving maintainability and collaboration in development projects.
+
+    Features:
+    🔍 Automatically inserts hash separators in Python files.
+    📁 Supports processing of single files, all Python files in a directory, or specific directories.
+    🛠️ Enhances code organization and readability.
+    🚀 Lightweight and easy-to-use.
+
+    Auto_Hash_Separator is ideal for developers looking to streamline code organization and maintain clean, 
+    structured Python projects. Whether you're working on a small script or a large-scale application, 
+    Auto_Hash_Separator helps you maintain clarity and structure in your codebase.
+
+    Visit our [GitHub repository](https://github.com/bantoinese83/Code_separator) for more information and to get 
+    started with Auto_Hash_Separator today!
+    
